@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.lcov
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Production
+*.log
+*.tgz
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+*.tsbuildinfo
+
+# Local env files
+.env
+.env*.local
+.env.production
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo
+
+# Bun
+bun.lockb
