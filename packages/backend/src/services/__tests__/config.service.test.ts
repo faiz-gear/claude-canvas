@@ -95,7 +95,9 @@ describe('ConfigService', () => {
       expect(result).not.toBeNull()
       // Credentials should NEVER be exposed from local config
       expect(result?.hasCredentials).toBe(true)
-      expect(result?.credentials).toBeUndefined()
+      expect(result?.hasSettings).toBe(false)
+      // settings will be an empty object when no settings.json exists
+      expect(result?.settings).toEqual({})
     })
 
     it('should read both settings and credentials files', async () => {
@@ -186,7 +188,8 @@ describe('ConfigService', () => {
           model: 'claude-sonnet-4',
           maxTokens: 4096
         },
-        hasCredentials: true
+        hasCredentials: true,
+        hasSettings: true
       }
 
       const dbConfig = {
@@ -208,7 +211,8 @@ describe('ConfigService', () => {
     it('should use db config values when local is missing', () => {
       const localConfig = {
         settings: {},
-        hasCredentials: false
+        hasCredentials: false,
+        hasSettings: true
       }
 
       const dbConfig = {
@@ -231,7 +235,8 @@ describe('ConfigService', () => {
           model: 'claude-sonnet-4-local',
           temperature: 0.5
         },
-        hasCredentials: true
+        hasCredentials: true,
+        hasSettings: true
       }
 
       const dbConfig = {
@@ -266,7 +271,8 @@ describe('ConfigService', () => {
         settings: {
           model: 'claude-sonnet-4'
         },
-        hasCredentials: false
+        hasCredentials: false,
+        hasSettings: true
       }
 
       const merged = configService.mergeConfig(localConfig, null)

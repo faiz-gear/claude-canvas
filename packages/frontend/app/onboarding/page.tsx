@@ -4,7 +4,7 @@
  * First-time setup wizard for Claude Canvas
  */
 
-import { OnboardingWizard } from '@/components/onboarding/wizard'
+import { OnboardingWizard } from '@/components/onboarding'
 
 export default function OnboardingPage() {
   return <OnboardingWizard />

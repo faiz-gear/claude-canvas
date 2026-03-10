@@ -198,7 +198,6 @@ export function OnboardingWizard() {
               formData={formData}
               onChange={setFormData}
               error={error}
-              configStatus={configStatus}
             />
           )}
           {currentStep === 'settings' && (
@@ -359,13 +358,11 @@ function DetectStep({
 function ApiKeyStep({
   formData,
   onChange,
-  error,
-  configStatus
+  error
 }: {
   formData: FormData
   onChange: (data: FormData) => void
   error: string | null
-  configStatus: ConfigStatus | null
 }) {
   const [showApiKey, setShowApiKey] = useState(false)
 

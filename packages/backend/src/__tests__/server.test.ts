@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'bun:test'
+import { describe, it, expect } from 'bun:test'
 import { app as honaApp } from '../index'
 
 /**
@@ -11,7 +11,7 @@ describe('Backend Server', () => {
     const response = await honaApp.request('/health')
     expect(response.status).toBe(200)
 
-    const json = await response.json()
+    const json = await response.json() as { status: string }
     expect(json).toHaveProperty('status')
     expect(json.status).toBe('ok')
   })
@@ -28,7 +28,7 @@ describe('Backend Server', () => {
     const response = await honaApp.request('/api/test')
     expect(response.status).toBe(200)
 
-    const json = await response.json()
+    const json = await response.json() as { message: string }
     expect(json).toHaveProperty('message')
     expect(json.message).toBe('API is working')
   })

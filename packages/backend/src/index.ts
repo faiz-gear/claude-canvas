@@ -33,7 +33,7 @@ app.get('/api/test', (c) => {
 })
 
 // WebSocket endpoint
-app.get('/ws', websocket)
+app.get('/ws', websocket as any)
 
 // 404 handler
 app.notFound((c) => {

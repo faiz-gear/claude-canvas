@@ -4,14 +4,14 @@
  * Tests onboarding and configuration API endpoints
  */
 
-import { describe, it, expect, beforeEach, afterEach } from 'bun:test'
+import { describe, it, expect, beforeEach } from 'bun:test'
 import { Hono } from 'hono'
 import { authRoutes } from '../auth'
 
 // Mock the services
 const mockConfigService = {
-  tryReadLocalConfig: async () => null,
-  detectLocalConfig: async () => false,
+  tryReadLocalConfig: async (): Promise<any> => null,
+  detectLocalConfig: async (): Promise<boolean> => false,
   getClaudeDirectory: () => '/test/.claude',
   mergeConfig: (local: any, db: any) => ({
     ...db,

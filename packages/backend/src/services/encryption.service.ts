@@ -19,19 +19,6 @@ const IV_LENGTH = 12 // 96 bits for GCM (recommended by NIST)
 const KEY_LENGTH = 32 // 256 bits for AES-256
 const AUTH_TAG_LENGTH = 16 // 128 bits auth tag
 
-// Format: IV (12 bytes) + AuthTag (16 bytes) + Ciphertext
-// All base64 encoded
-const OVERHEAD = IV_LENGTH + AUTH_TAG_LENGTH
-
-/**
- * Encryption result format
- */
-interface EncryptedData {
-  iv: string // base64 encoded IV
-  tag: string // base64 encoded auth tag
-  data: string // base64 encrypted data
-}
-
 /**
  * Encryption Service
  *
